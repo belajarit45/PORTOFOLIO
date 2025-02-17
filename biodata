@@ -2,8 +2,8 @@ buatkan saya ide tampilan cv berbentuk html namun ketika di print tampilan kerta
 a. ini link fotonya : https://raw.githubusercontent.com/belajarit45/PORTOFOLIO/main/baron%20biru.png
 b. ini link website nya : https://belajarit45.github.io/PORTOFOLIO/index.html
 c. ini barcode website nya : https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fbelajarit45.github.io%2FPORTOFOLIO%2Findex.html
-d. tambah kan ini paling bawah : <p>&copy; 2025 MUHAMMAD ANDRIAN DIRGANTARA SUMARTONO</p>
-e. untuk barcode di letak di bagian sebelah nya informasi 
+d. tambah kan ini paling bawah halaman dan posisi ditengah bawah : <p>&copy; 2025 MUHAMMAD ANDRIAN DIRGANTARA SUMARTONO</p>
+e. untuk barcode di letak di dalamnya bagian informasi sebelah kanan jadi posisi nya sebelah kiri terisi nama , email , nomor hp dan url website lalu sebelah kanannya di isi dengan barcode nya 
 f. ini isi nya :
 **Informasi Pribadi**  
    - nama → MUHAMMAD ANDRIAN DIRGANTARA SUMARTONO
