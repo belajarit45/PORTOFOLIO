@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CV Interaktif</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header .foto-profil {
+      flex: 0 0 150px;
+    }
+    .header .foto-profil img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .header .info {
+      flex: 1;
+      margin-left: 20px;
+    }
+    .header .qr-code {
+      flex: 0 0 100px;
+      text-align: center;
+    }
+    .header .qr-code img {
+      width: 100px;
+      height: 100px;
+    }
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header dengan Foto Profil -->
+    <div class="header">
+      <div class="foto-profil">
+        <img src="https://via.placeholder.com/150" alt="Foto Profil">
+      </div>
+      <div class="info">
+        <h1>NAMA LENGKAP</h1>
+        <p>Posisi/Jabatan yang Diinginkan</p>
+      </div>
+      <div class="qr-code">
+        <img src="https://via.placeholder.com/100" alt="QR Code">
+        <p style="font-size: 0.8em;">Scan untuk info lebih lanjut</p>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Kontak -->
+    <div class="kontak">
+      <p><strong>Email:</strong> email@example.com</p>
+      <p><strong>Telepon:</strong> +62 123 4567</p>
+      <p><strong>Website:</strong> <a href="http://yourwebsite.com" target="_blank">yourwebsite.com</a></p>
+    </div>
+    <hr>
+
+    <!-- Profil Singkat -->
+    <div class="profil">
+      <h2>Profil Singkat</h2>
+      <p>
+        Saya adalah seorang profesional di bidang <strong>[bidang keahlian]</strong> dengan pengalaman <strong>[x tahun]</strong>. Saya memiliki kemampuan dalam <strong>[keterampilan utama]</strong> dan terbiasa bekerja dalam tim maupun mandiri untuk mencapai target perusahaan.
+      </p>
+    </div>
+    <hr>
+
+    <!-- Pengalaman Kerja -->
+    <div class="pengalaman">
+      <h2>Pengalaman Kerja</h2>
+      <ul>
+        <li>
+          <strong>Nama Perusahaan</strong> – Posisi (Tahun Mulai - Tahun Selesai)<br>
+          Deskripsi singkat tentang peran, tanggung jawab, dan pencapaian.
+        </li>
+        <li>
+          <strong>Nama Perusahaan</strong> – Posisi (Tahun Mulai - Tahun Selesai)<br>
+          Deskripsi singkat tentang peran, tanggung jawab, dan pencapaian.
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <!-- Pendidikan -->
+    <div class="pendidikan">
+      <h2>Pendidikan</h2>
+      <ul>
+        <li>
+          <strong>Institusi Pendidikan</strong> – Gelar (Tahun Lulus)
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <!-- Keterampilan -->
+    <div class="keterampilan">
+      <h2>Keterampilan Utama</h2>
+      <ul>
+        <li>Keterampilan 1</li>
+        <li>Keterampilan 2</li>
+        <li>Keterampilan 3</li>
+        <li>Keterampilan 4</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
