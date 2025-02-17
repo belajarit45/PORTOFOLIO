@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CV - [Nama Anda]</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .header .foto {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .header .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .header .info {
+      flex: 1;
+      padding: 0 20px;
+      min-width: 200px;
+    }
+    .header .info h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .header .info p {
+      margin: 5px 0 0 0;
+      font-size: 1.1em;
+      color: #555;
+    }
+    .header .qr-section {
+      text-align: center;
+    }
+    .header .qr-section img {
+      width: 120px;
+      height: 120px;
+    }
+    .header .qr-section p {
+      margin: 5px 0 0 0;
+      font-size: 0.9em;
+      color: #666;
+    }
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    .section h2 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .section p, .section ul {
+      margin: 0 0 10px 0;
+      line-height: 1.6;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header dengan Foto, Informasi, dan QR Code -->
+    <div class="header">
+      <div class="foto">
+        <img src="[URL_FOTO]" alt="Foto Profil">
+      </div>
+      <div class="info">
+        <h1>[Nama Lengkap]</h1>
+        <p>[Posisi / Jabatan yang Diinginkan]</p>
+      </div>
+      <div class="qr-section">
+        <img src="[URL_QR_CODE]" alt="QR Code">
+        <p>Scan untuk info lengkap</p>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <!-- Kontak -->
+    <div class="section kontak">
+      <h2>Kontak</h2>
+      <p><strong>Email:</strong> [email@example.com]</p>
+      <p><strong>Telepon:</strong> [+62 123 4567]</p>
+      <p><strong>Website:</strong> <a href="[URL_WEBSITE]" target="_blank">[yourwebsite.com]</a></p>
+    </div>
+    
+    <!-- Profil Singkat -->
+    <div class="section profil">
+      <h2>Profil Singkat</h2>
+      <p>
+        Saya adalah seorang profesional di bidang <strong>[bidang keahlian]</strong> dengan pengalaman <strong>[x tahun]</strong>. 
+        Saya memiliki kemampuan dalam <strong>[keterampilan utama]</strong> dan terbiasa bekerja dalam tim maupun mandiri untuk mencapai target perusahaan.
+      </p>
+    </div>
+    
+    <!-- Pengalaman Kerja -->
+    <div class="section pengalaman">
+      <h2>Pengalaman Kerja</h2>
+      <ul>
+        <li>
+          <strong>[Nama Perusahaan]</strong> – [Posisi] ([Tahun Mulai] - [Tahun Selesai])<br>
+          [Deskripsi singkat tentang peran dan pencapaian.]
+        </li>
+        <li>
+          <strong>[Nama Perusahaan]</strong> – [Posisi] ([Tahun Mulai] - [Tahun Selesai])<br>
+          [Deskripsi singkat tentang peran dan pencapaian.]
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Pendidikan -->
+    <div class="section pendidikan">
+      <h2>Pendidikan</h2>
+      <ul>
+        <li>
+          <strong>[Institusi Pendidikan]</strong> – [Gelar] ([Tahun Lulus])
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Keterampilan Utama -->
+    <div class="section keterampilan">
+      <h2>Keterampilan Utama</h2>
+      <ul>
+        <li>[Keterampilan 1]</li>
+        <li>[Keterampilan 2]</li>
+        <li>[Keterampilan 3]</li>
+        <li>[Keterampilan 4]</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
