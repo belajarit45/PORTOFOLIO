@@ -57,7 +57,7 @@
   <!-- Hero Section -->
   <header id="home" class="h-screen flex flex-col justify-center items-center text-center relative">
     <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
-      <source src="https://videocdn.cdnpk.net/videos/42117d19-46b9-4ef1-9b66-ab40e8891fc5/horizontal/previews/clear/large.mp4?token=exp=1739873099~hmac=fe6ad582418cf3db58138d24c6d91e64de55f7a221f55dbf6e0c17d0c2fdc923" type="video/mp4">
+      <source src="https://github.com/belajarit45/PORTOFOLIO/blob/main/456479_Timelapse_Time-lapse_1920x1080.mp4?raw=true" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="absolute inset-0 bg-black opacity-50"></div>
