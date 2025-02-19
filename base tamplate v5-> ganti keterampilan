@@ -135,87 +135,70 @@
         <!-- Jaringan & IT Support -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12L16 16M12 12L8 16M12 12l4-4M12 12l-4-4"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/network.png" alt="Jaringan & IT Support" class="w-12 h-12">
           </div>
           <h4 class="text-xl font-semibold text-white text-center">Jaringan & IT Support</h4>
         </div>
   
-        <!-- Keamanan & Sistem IT -->
+        <!-- Keamanan & Manajemen IT -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 0l-2-2m2 2l2-2"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/lock.png" alt="Keamanan & Manajemen IT" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Keamanan & Sistem IT</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Keamanan & Manajemen IT</h4>
         </div>
   
         <!-- Web Development -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h18M3 8h18M3 12h18M3 16h18M3 20h18"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/code.png" alt="Web Development" class="w-12 h-12">
           </div>
           <h4 class="text-xl font-semibold text-white text-center">Web Development</h4>
         </div>
   
-        <!-- Instalasi dan Manajemen Sistem CCTV -->
+        <!-- Instalasi & Manajemen CCTV -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6l16 0M4 12l16 0M4 18l16 0"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/indoor-camera.png" alt="Instalasi & Manajemen CCTV" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Instalasi dan Manajemen Sistem CCTV</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Instalasi & Manajemen CCTV</h4>
         </div>
   
-        <!-- Desain & Pengembangan -->
+        <!-- Desain & Pengembangan Sistem -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12h-6m0 0L12 6m0 6l-3 6"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/flow-chart.png" alt="Desain & Pengembangan Sistem" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Desain & Pengembangan</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Desain & Pengembangan Sistem</h4>
         </div>
   
-        <!-- Perakitan & Troubleshooting Perangkat Keras -->
+        <!-- Perakitan & Diagnostik Perangkat Keras -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 14l5-5m0 0l5 5m-5-5v12"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/toolbox.png" alt="Perakitan & Diagnostik Perangkat Keras" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Perakitan & Troubleshooting Perangkat Keras</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Perakitan & Diagnostik Perangkat Keras</h4>
         </div>
   
-        <!-- Pengelolaan Sistem & Jaringan -->
+        <!-- Manajemen Sistem IoT -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M6 18l12-12"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/internet-of-things.png" alt="Manajemen Sistem IoT" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Pengelolaan Sistem & Jaringan</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Manajemen Sistem IoT</h4>
         </div>
   
-        <!-- Penggunaan Aplikasi Produktivitas -->
+        <!-- Optimasi Aplikasi Produktivitas -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
           <div class="flex justify-center items-center mb-4">
-            <svg class="w-12 h-12 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5v14h6V5H9z"/>
-            </svg>
+            <img src="https://img.icons8.com/ios/96/ffffff/combo-chart.png" alt="Optimasi Aplikasi Produktivitas" class="w-12 h-12">
           </div>
-          <h4 class="text-xl font-semibold text-white text-center">Penggunaan Aplikasi Produktivitas</h4>
+          <h4 class="text-xl font-semibold text-white text-center">Optimasi Aplikasi Produktivitas</h4>
         </div>
       </div>
     </div>
   </section>
   
-
   <!-- Proyek -->
   <section id="projects" class="scroll-mt-20 py-16 px-6" data-aos="fade-up" data-aos-duration="800">
     <div class="container mx-auto text-center">
