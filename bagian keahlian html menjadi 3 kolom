@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Carousel (Triple Column)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .carousel-box {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #facc15;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100px;
+    }
+
+    .carousel-inner {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .skill-item {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      background: #222;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    }
+
+    .skill-item i {
+      font-size: 40px;
+      color: #facc15;
+    }
+
+    .skill-text {
+      text-align: left;
+    }
+
+    .skill-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #facc15;
+    }
+
+    .skill-desc {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="carousel-box">
+      <h2>Keterampilan 1</h2>
+      <div class="carousel" id="carousel1">
+        <div class="carousel-inner">
+          <div class="skill-item"><i class="fa-solid fa-code"></i><div class="skill-text"><div class="skill-title">VS Code</div><div class="skill-desc">Code Editor</div></div></div>
+          <div class="skill-item"><i class="fa-solid fa-database"></i><div class="skill-text"><div class="skill-title">MySQL</div><div class="skill-desc">Database Management</div></div></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="carousel-box">
+      <h2>Keterampilan 2</h2>
+      <div class="carousel" id="carousel2">
+        <div class="carousel-inner">
+          <div class="skill-item"><i class="fa-brands fa-html5"></i><div class="skill-text"><div class="skill-title">HTML</div><div class="skill-desc">Basic Web Development</div></div></div>
+          <div class="skill-item"><i class="fa-brands fa-css3-alt"></i><div class="skill-text"><div class="skill-title">CSS</div><div class="skill-desc">Web Styling</div></div></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="carousel-box">
+      <h2>Keterampilan 3</h2>
+      <div class="carousel" id="carousel3">
+        <div class="carousel-inner">
+          <div class="skill-item"><i class="fa-brands fa-js"></i><div class="skill-text"><div class="skill-title">JavaScript</div><div class="skill-desc">Frontend Scripting</div></div></div>
+          <div class="skill-item"><i class="fa-brands fa-php"></i><div class="skill-text"><div class="skill-title">PHP</div><div class="skill-desc">Backend Development</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function initCarousel(carouselId) {
+      const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+      const items = document.querySelectorAll(`#${carouselId} .skill-item`);
+      const totalItems = items.length;
+      const firstClone = items[0].cloneNode(true);
+      carouselInner.appendChild(firstClone);
+
+      let index = 0;
+      let autoScroll;
+
+      function updateCarousel() {
+        carouselInner.style.transition = 'transform 0.5s ease-in-out';
+        carouselInner.style.transform = `translateY(-${index * 100}px)`;
+
+        if (index === totalItems) {
+          setTimeout(() => {
+            carouselInner.style.transition = 'none';
+            index = 0;
+            carouselInner.style.transform = `translateY(0)`;
+          }, 500);
+        }
+      }
+
+      function nextSlide() {
+        index++;
+        updateCarousel();
+      }
+
+      function startAutoScroll() {
+        autoScroll = setInterval(nextSlide, 3000);
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScroll);
+      }
+
+      startAutoScroll();
+      document.getElementById(carouselId).addEventListener('mouseenter', stopAutoScroll);
+      document.getElementById(carouselId).addEventListener('mouseleave', startAutoScroll);
+    }
+
+    initCarousel('carousel1');
+    initCarousel('carousel2');
+    initCarousel('carousel3');
+  </script>
+
+</body>
+</html>
