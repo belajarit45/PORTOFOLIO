@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Pengalaman Kerja</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        .container { max-width: 800px; margin: auto; }
+        h1 { text-align: center; color: #007bff; }
+        .faq { border-bottom: 1px solid #ddd; padding: 15px 0; }
+        .question { font-weight: bold; cursor: pointer; color: #007bff; }
+        .answer { display: none; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FAQ - Tentang Pengalaman Kerja</h1>
+        
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(0)">Bagaimana saya mengembangkan dan beradaptasi dengan perkembangan teknologi di bidang IT?</div>
+            <div class="answer">Saya rutin memperbarui keterampilan dengan belajar secara mandiri melalui eksplorasi teknologi baru, membaca dokumentasi teknis, serta mengerjakan proyek pribadi untuk mengasah keterampilan. Selain itu, saya berpartisipasi dalam komunitas IT dan mengikuti tren terbaru agar selalu relevan dengan perkembangan teknologi.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(1)">Bagaimana saya memberikan dampak positif dalam pekerjaan atau proyek yang saya jalankan?</div>
+            <div class="answer">Saya selalu berusaha memberikan dampak positif dengan meningkatkan efisiensi operasional, mengoptimalkan infrastruktur IT, serta menciptakan solusi strategis dalam menyelesaikan tantangan teknis. Saya juga berkontribusi dalam meningkatkan produktivitas tim dengan berbagi pengetahuan dan pengalaman.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(2)">Apa kontribusi yang bisa saya berikan dalam tim atau proyek perusahaan?</div>
+            <div class="answer">Saya dapat memberikan kontribusi melalui kemampuan problem-solving, kerja sama tim yang solid, serta pendekatan analitis dalam menyelesaikan tugas. Saya juga berusaha meningkatkan efisiensi kerja dengan pendekatan strategis berbasis teknologi yang lebih optimal.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(3)">Bagaimana saya mengatasi tantangan teknis dan bekerja di bawah tekanan?</div>
+            <div class="answer">Saya menggunakan metode troubleshooting yang sistematis, memanfaatkan alat bantu yang tersedia, dan tetap fokus pada solusi. Saya juga mengatur prioritas dengan baik untuk memastikan tugas dapat diselesaikan secara efisien dan tepat waktu.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(4)">Apa pendekatan saya dalam menyelesaikan proyek atau tugas?</div>
+            <div class="answer">Saya menerapkan pendekatan analitis dengan mengidentifikasi masalah utama, merancang solusi, serta mengimplementasikannya secara sistematis. Saya juga memastikan komunikasi yang efektif dalam tim untuk mencapai hasil terbaik.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(5)">Bagaimana cara saya meningkatkan efisiensi kerja dalam tim?</div>
+            <div class="answer">Saya selalu berusaha meningkatkan efisiensi kerja dengan mengoptimalkan proses, menerapkan teknologi yang lebih efektif, dan berkolaborasi secara aktif dalam tim. Komunikasi yang jelas dan pembagian tugas yang strategis juga menjadi fokus utama saya.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(6)">Apa nilai dan etos kerja yang saya pegang dalam dunia profesional?</div>
+            <div class="answer">Saya menjunjung tinggi disiplin, tanggung jawab, serta sikap proaktif dalam menyelesaikan tugas. Saya memiliki semangat belajar yang tinggi dan berkomitmen untuk memberikan kontribusi terbaik bagi perusahaan.</div>
+        </div>
+
+        <div class="faq">
+            <div class="question" onclick="toggleAnswer(7)">Bagaimana cara menghubungi saya?</div>
+            <div class="answer">Anda dapat menghubungi saya melalui email atau nomor telepon yang tersedia di halaman kontak website ini.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(index) {
+            var answers = document.querySelectorAll(".answer");
+            answers.forEach((answer, i) => {
+                if (i === index) {
+                    answer.style.display = answer.style.display === "block" ? "none" : "block";
+                } else {
+                    answer.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
