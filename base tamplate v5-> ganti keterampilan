@@ -70,7 +70,7 @@
       <ul :class="{'block': open, 'hidden': !open}" class="absolute md:static bg-gray-800 md:bg-transparent top-full left-0 w-full md:w-auto md:flex md:space-x-6 p-4 md:p-0">
         <li><a href="#home" class="block md:inline hover:text-yellow-400">Beranda</a></li>
         <li><a href="#about" class="block md:inline hover:text-yellow-400">Tentang</a></li>
-        <li><a href="#skills" class="block md:inline hover:text-yellow-400">Keterampilan</a></li>
+        <li><a href="#skills" class="block md:inline hover:text-yellow-400">Keahlian</a></li>
         <li><a href="#projects" class="block md:inline hover:text-yellow-400">Proyek</a></li>
         <li><a href="#contact" class="block md:inline hover:text-yellow-400">Kontak</a></li>
       </ul>
@@ -108,7 +108,7 @@
     <div class="container mx-auto text-center max-w-3xl">
       <h2 class="text-3xl font-bold text-yellow-400">Tentang Saya</h2>
       <p class="mt-4 text-gray-300">
-        Saya seorang profesional IT berpengalaman dalam instalasi, konfigurasi, dan troubleshooting jaringan serta perangkat keras. Keahlian saya meliputi perakitan komputer, sistem CCTV, dan penguasaan perangkat lunak, dengan dasar pemrograman HTML, CSS, PHP, dan Python.
+        Hi, Saya Muhammad Andrian dari Pekanbaru, Riau, Indonesia. Saya adalah seorang profesional IT pengalaman dalam instalasi, konfigurasi, dan troubleshooting jaringan serta perangkat keras. Keahlian saya meliputi perakitan komputer, pengelolaan sistem CCTV, dan penguasaan perangkat lunak, dengan dasar pemrograman HTML, CSS, PHP, dan Python.
       </p>
       <p class="mt-4 text-gray-300">
         Di luar teknologi, saya tertarik pada olahraga dan traveling. Saya selalu berusaha memperluas wawasan dengan mempelajari perkembangan terbaru dalam bidang teknologi. Bagi saya, tantangan dan pengalaman baru adalah kunci untuk terus berkembang, baik secara pribadi maupun profesional.
@@ -117,17 +117,17 @@
     </div>
   </section>
   
-  <!-- Keterampilan -->
+  <!-- Keahlian -->
   <section id="skills" class="scroll-mt-20 bg-gray-800 py-16 px-6" data-aos="fade-up" data-aos-duration="800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-yellow-400">Keterampilan</h2>
+      <h2 class="text-3xl font-bold text-yellow-400">Keahlian</h2>
       <p class="mt-4 text-gray-300">
         <strong>Apa yang Anda cari?</strong> <br>
         Saya selalu memperioritaskan ketepatan dan kecepatan dalam mengembangkan ide maupun memecahkan masalah. Dengan pengalaman yang luas di berbagai bidang IT, saya siap membantu Anda mencapai tujuan dengan solusi yang efektif dan efisien.
       </p>
       <p class="mt-4 text-gray-300">
         <strong>Kenapa Memilih Saya?</strong> <br>
-        Saya sangat profesional dan memiliki jiwa tanggung jawab yang besar dalam menyelesaikan masalah. Dengan pengalaman yang luas dan keterampilan teknis yang mumpuni, saya siap memberikan solusi terbaik untuk setiap tantangan IT. Saya percaya pada pentingnya kualitas dan kecepatan dalam setiap proyek yang saya kerjakan.
+        Saya sangat profesional dan memiliki jiwa tanggung jawab yang besar dalam menyelesaikan masalah. Dengan pengalaman yang luas dan Keahlian teknis yang mumpuni, saya siap memberikan solusi terbaik untuk setiap tantangan IT. Saya percaya pada pentingnya kualitas dan kecepatan dalam setiap proyek yang saya kerjakan.
       </p>
   
       <h3 class="text-2xl font-semibold mt-8 text-yellow-400">Layanan yang Saya Kuasai:</h3>
