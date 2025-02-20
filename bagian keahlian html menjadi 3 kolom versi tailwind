@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Carousel (Triple Column)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<body class="bg-[#111] text-white flex justify-center items-center h-screen">
+  <div class="flex gap-5">
+    <!-- Carousel 1 -->
+    <div class="w-full max-w-[300px] text-center" data-aos="fade-up" data-aos-duration="1000">
+      <h2 class="mb-5 text-[20px] text-[#facc15]">Keterampilan 1</h2>
+      <div class="relative overflow-hidden w-full h-[100px]" id="carousel1">
+        <div class="carousel-inner flex flex-col transition-transform duration-500 ease-in-out">
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-google-drive text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Google Drive</div>
+              <div class="text-[14px] text-[#ccc]">Cloud Storage</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-microsoft text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">OneDrive</div>
+              <div class="text-[14px] text-[#ccc]">Cloud Backup</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-dropbox text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Dropbox</div>
+              <div class="text-[14px] text-[#ccc]">File Synchronization</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-table text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Microsoft Excel</div>
+              <div class="text-[14px] text-[#ccc]">Data Analysis</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-file-word text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Microsoft Word</div>
+              <div class="text-[14px] text-[#ccc]">Document Processing</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-file-powerpoint text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Microsoft PowerPoint</div>
+              <div class="text-[14px] text-[#ccc]">Presentation</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-palette text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Canva</div>
+              <div class="text-[14px] text-[#ccc]">Graphic Design</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel 2 -->
+    <div class="w-full max-w-[300px] text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+      <h2 class="mb-5 text-[20px] text-[#facc15]">Keterampilan 2</h2>
+      <div class="relative overflow-hidden w-full h-[100px]" id="carousel2">
+        <div class="carousel-inner flex flex-col transition-transform duration-500 ease-in-out">
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-network-wired text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">TeamViewer</div>
+              <div class="text-[14px] text-[#ccc]">Remote Access</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-laptop text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">AnyDesk</div>
+              <div class="text-[14px] text-[#ccc]">Remote Desktop Control</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-desktop text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">RDP</div>
+              <div class="text-[14px] text-[#ccc]">Remote Access</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-terminal text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Putty</div>
+              <div class="text-[14px] text-[#ccc]">SSH Client</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-chart-line text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Netdata</div>
+              <div class="text-[14px] text-[#ccc]">System Monitoring</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-cloud text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">ngrok</div>
+              <div class="text-[14px] text-[#ccc]">Local Tunneling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel 3 -->
+    <div class="w-full max-w-[300px] text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+      <h2 class="mb-5 text-[20px] text-[#facc15]">Keterampilan 3</h2>
+      <div class="relative overflow-hidden w-full h-[100px]" id="carousel3">
+        <div class="carousel-inner flex flex-col transition-transform duration-500 ease-in-out">
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-code text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Visual Studio Code</div>
+              <div class="text-[14px] text-[#ccc]">Code Editor</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-solid fa-server text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">XAMPP</div>
+              <div class="text-[14px] text-[#ccc]">PHP Development</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-html5 text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">HTML</div>
+              <div class="text-[14px] text-[#ccc]">Basic Development</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-css3-alt text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">CSS</div>
+              <div class="text-[14px] text-[#ccc]">Web Styling</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-php text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">PHP</div>
+              <div class="text-[14px] text-[#ccc]">Back-End Development</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-python text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">Python</div>
+              <div class="text-[14px] text-[#ccc]">Programming & Scripting</div>
+            </div>
+          </div>
+          <div class="skill-item min-h-[100px] flex items-center justify-center gap-[15px] p-[15px] bg-[#222] rounded-[8px] shadow-[0_4px_6px_rgba(255,255,255,0.1)]">
+            <i class="fa-brands fa-github text-[40px] text-[#facc15]"></i>
+            <div class="text-left">
+              <div class="text-[18px] font-bold text-[#facc15]">GitHub</div>
+              <div class="text-[14px] text-[#ccc]">Version Control</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function initCarousel(carouselId) {
+      const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+      const items = document.querySelectorAll(`#${carouselId} .skill-item`);
+      const totalItems = items.length;
+      // Clone item pertama untuk looping
+      const firstClone = items[0].cloneNode(true);
+      carouselInner.appendChild(firstClone);
+
+      let index = 0;
+      let autoScroll;
+
+      function updateCarousel() {
+        carouselInner.style.transition = 'transform 0.5s ease-in-out';
+        carouselInner.style.transform = `translateY(-${index * 100}px)`;
+
+        if (index === totalItems) {
+          setTimeout(() => {
+            carouselInner.style.transition = 'none';
+            index = 0;
+            carouselInner.style.transform = `translateY(0)`;
+          }, 500);
+        }
+      }
+
+      function nextSlide() {
+        index++;
+        updateCarousel();
+      }
+
+      function startAutoScroll() {
+        autoScroll = setInterval(nextSlide, 3000);
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScroll);
+      }
+
+      startAutoScroll();
+      document.getElementById(carouselId).addEventListener('mouseenter', stopAutoScroll);
+      document.getElementById(carouselId).addEventListener('mouseleave', startAutoScroll);
+    }
+
+    initCarousel('carousel1');
+    initCarousel('carousel2');
+    initCarousel('carousel3');
+  </script>
+</body>
+</html>
