@@ -46,7 +46,7 @@
     .hero h2 {
       font-size: 2.25rem;
       margin: 0.5rem 0;
-      color: #f6e05e; /* text-yellow-400 */
+      color: #facc15; /* text-yellow-400 */
     }
     .hero p {
       margin-top: 0.75rem; /* mt-3 */
@@ -97,12 +97,12 @@
     .nav-logo {
       font-size: 1.25rem; /* text-xl */
       font-weight: bold;
-      color: #f6e05e; /* text-yellow-400 */
+      color: #facc15; /* text-yellow-400 */
     }
     .hamburger {
       background: none;
       border: none;
-      color: #f6e05e;
+      color: #facc15;
       cursor: pointer;
       display: none;
     }
@@ -119,7 +119,7 @@
       color: white;
       transition: color 300ms;
     }
-    .nav-menu li a:hover { color: #f6e05e; }
+    .nav-menu li a:hover { color: #facc15; }
     /* Responsive Navbar */
     @media (max-width: 768px) {
       .hamburger { display: block; }
@@ -167,18 +167,18 @@
       transition: background-color 300ms, color 300ms;
     }
     .btn-primary {
-      background-color: #f6e05e;
+      background-color: #facc15;
       color: #1a202c;
       border: none;
     }
     .btn-primary:hover { background-color: #ecc94b; }
     .btn-outline {
-      border: 2px solid #f6e05e;
-      color: #f6e05e;
+      border: 2px solid #facc15;
+      color: #facc15;
       margin-left: 1rem;
     }
     .btn-outline:hover {
-      background-color: #f6e05e;
+      background-color: #facc15;
       color: #1a202c;
     }
     /* Sections Umum */
@@ -194,7 +194,7 @@
     .about h2 {
       font-size: 1.875rem; /* text-3xl */
       font-weight: bold;
-      color: #f6e05e;
+      color: #facc15;
     }
     .about p {
       margin-top: 1rem;
@@ -219,7 +219,7 @@
     .skills h2 {
       font-size: 1.875rem;
       font-weight: bold;
-      color: #f6e05e;
+      color: #facc15;
     }
     .skills p {
       margin-top: 1rem;
@@ -230,7 +230,7 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin-top: 2rem;
-      color: #f6e05e;
+      color: #facc15;
     }
     .skills-grid {
       display: grid;
@@ -254,7 +254,7 @@
       text-align: center;
     }
     .skill-card:hover {
-      background-color: #f6e05e;
+      background-color: #facc15;
       transform: scale(1.05);
     }
     .skill-card img {
@@ -272,7 +272,7 @@
     .projects h2 {
       font-size: 1.875rem;
       font-weight: bold;
-      color: #f6e05e;
+      color: #facc15;
     }
     .projects-grid {
       display: grid;
@@ -304,7 +304,7 @@
     .project-card a {
       display: inline-block;
       margin-top: 1rem;
-      color: #f6e05e;
+      color: #facc15;
       text-decoration: none;
       transition: text-decoration 300ms;
     }
@@ -313,14 +313,14 @@
     .contact h2 {
       font-size: 1.875rem;
       font-weight: bold;
-      color: #f6e05e;
+      color: #facc15;
     }
     .contact p {
       margin-top: 1rem;
       color: #d1d5db;
     }
     .contact a {
-      color: #f6e05e;
+      color: #facc15;
       text-decoration: none;
       transition: text-decoration 300ms;
     }
