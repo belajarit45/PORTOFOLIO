@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Nama Anda</title>
+  <!-- Alpine.js & AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      AOS.init({
+        easing: 'ease-out-cubic',
+        once: true,
+      });
+    });
+  </script>
+  <style>
+    /* Global */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #1a202c; /* bg-gray-900 */
+      color: white;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .font-bold { font-weight: bold; }
+    .rounded-full { border-radius: 9999px; }
+    .shadow-lg { 
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    /* Responsive Typography untuk Hero */
+    .hero h1 {
+      font-size: 2.25rem; /* text-4xl */
+      margin: 0;
+    }
+    .hero h2 {
+      font-size: 2.25rem;
+      margin: 0.5rem 0;
+      color: #f6e05e; /* text-yellow-400 */
+    }
+    .hero p {
+      margin-top: 0.75rem; /* mt-3 */
+      font-size: 1.125rem; /* text-lg */
+      color: #d1d5db; /* text-gray-300 */
+    }
+    @media (min-width: 640px) {
+      .hero h1,
+      .hero h2 { font-size: 3rem; /* text-5xl */ }
+      .hero p { font-size: 1.25rem; /* text-xl */ }
+    }
+    @media (min-width: 768px) {
+      .hero h1,
+      .hero h2 { font-size: 3.75rem; /* text-6xl */ }
+    }
+    /* Video Background */
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    @media (max-width: 768px) {
+      video { object-position: center; }
+    }
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      padding: 1rem;
+      transition: background-color 300ms, box-shadow 300ms;
+      z-index: 50;
+    }
+    nav.bg-transparent { background-color: transparent; }
+    nav.bg-scrolled { 
+      background-color: #2d3748; /* bg-gray-800 */
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.25rem; /* text-xl */
+      font-weight: bold;
+      color: #f6e05e; /* text-yellow-400 */
+    }
+    .hamburger {
+      background: none;
+      border: none;
+      color: #f6e05e;
+      cursor: pointer;
+      display: none;
+    }
+    /* Menu Navigasi */
+    .nav-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .nav-menu li { margin-left: 1.5rem; }
+    .nav-menu li a {
+      text-decoration: none;
+      color: white;
+      transition: color 300ms;
+    }
+    .nav-menu li a:hover { color: #f6e05e; }
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2d3748;
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+      }
+      .nav-menu.show { display: block; }
+      .nav-menu li { margin: 0.5rem 0; }
+    }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .hero .content { position: relative; z-index: 10; }
+    .max-w-xl { max-width: 36rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-5 { margin-top: 1.25rem; }
+    /* Tombol */
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 300ms, color 300ms;
+    }
+    .btn-primary {
+      background-color: #f6e05e;
+      color: #1a202c;
+      border: none;
+    }
+    .btn-primary:hover { background-color: #ecc94b; }
+    .btn-outline {
+      border: 2px solid #f6e05e;
+      color: #f6e05e;
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      background-color: #f6e05e;
+      color: #1a202c;
+    }
+    /* Sections Umum */
+    .section {
+      padding: 4rem 1.5rem; /* py-16 px-6 */
+      scroll-margin-top: 5rem; /* scroll-mt-20 */
+    }
+    /* Tentang Saya */
+    .about {
+      max-width: 48rem; /* max-w-3xl */
+      margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.875rem; /* text-3xl */
+      font-weight: bold;
+      color: #f6e05e;
+    }
+    .about p {
+      margin-top: 1rem;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+    .about img {
+      margin-top: 1.5rem;
+      width: 8rem; /* w-32 = 8rem */
+      height: 8rem; /* h-32 = 8rem */
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Keahlian */
+    .skills {
+      background-color: #2d3748; /* bg-gray-800 */
+    }
+    .skills h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #f6e05e;
+    }
+    .skills p {
+      margin-top: 1rem;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+    .skills h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      color: #f6e05e;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .skills-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .skill-card {
+      background-color: #2d3748;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 300ms, transform 300ms;
+      text-align: center;
+    }
+    .skill-card:hover {
+      background-color: #f6e05e;
+      transform: scale(1.05);
+    }
+    .skill-card img {
+      width: 3rem; /* w-12 = 3rem */
+      height: 3rem;
+      margin-bottom: 1rem;
+    }
+    .skill-card h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+      margin: 0;
+    }
+    /* Proyek */
+    .projects h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #f6e05e;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .project-card {
+      background-color: #2d3748;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: transform 300ms;
+    }
+    .project-card:hover { transform: scale(1.05); }
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .project-card p {
+      margin-top: 0.5rem;
+      color: #d1d5db;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #f6e05e;
+      text-decoration: none;
+      transition: text-decoration 300ms;
+    }
+    .project-card a:hover { text-decoration: underline; }
+    /* Kontak */
+    .contact h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #f6e05e;
+    }
+    .contact p {
+      margin-top: 1rem;
+      color: #d1d5db;
+    }
+    .contact a {
+      color: #f6e05e;
+      text-decoration: none;
+      transition: text-decoration 300ms;
+    }
+    .contact a:hover { text-decoration: underline; }
+    /* Footer */
+    footer {
+      background-color: #1a202c;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    footer p {
+      color: #a0aec0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay muted loop>
+    <source src="https://github.com/belajarit45/PORTOFOLIO/blob/main/456479_Timelapse_Time-lapse_1920x1080.mp4?raw=true" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Navbar -->
+  <nav x-data="{ scrolled: false, open: false }" 
+       @scroll.window="scrolled = (window.scrollY > 50)" 
+       :class="scrolled ? 'bg-scrolled' : 'bg-transparent'">
+    <div class="container nav-container">
+      <h1 class="nav-logo">Nama Anda</h1>
+      <button @click="open = !open" class="hamburger">
+        <svg x-show="!open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg x-show="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <ul :class="open ? 'nav-menu show' : 'nav-menu'">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="container content">
+      <div class="max-w-xl">
+        <h1>Hello, I'm</h1>
+        <h2>Muhammad Andrian</h2>
+        <p>Fullstack Developer, Database &amp; System Administrator</p>
+        <div class="mt-5">
+          <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+          <a href="resume.pdf" class="btn btn-outline">Unduh CV</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Tentang Saya -->
+  <section id="about" class="section" data-aos="fade-up" data-aos-duration="800">
+    <div class="container about text-center">
+      <h2>Tentang Saya</h2>
+      <p>Hi, Saya Muhammad Andrian dari Pekanbaru, Riau, Indonesia. Saya adalah seorang profesional IT pengalaman dalam instalasi, konfigurasi, dan troubleshooting jaringan serta perangkat keras. Keahlian saya meliputi perakitan komputer, pengelolaan sistem CCTV, dan penguasaan perangkat lunak, dengan dasar pemrograman HTML, CSS, PHP, dan Python.</p>
+      <p>Di luar teknologi, saya tertarik pada olahraga dan traveling. Saya selalu berusaha memperluas wawasan dengan mempelajari perkembangan terbaru dalam bidang teknologi. Bagi saya, tantangan dan pengalaman baru adalah kunci untuk terus berkembang, baik secara pribadi maupun profesional.</p>
+      <img src="profile.jpg" alt="Foto Profil" class="rounded-full shadow-lg">
+    </div>
+  </section>
+  
+  <!-- Keahlian -->
+  <section id="skills" class="section skills" data-aos="fade-up" data-aos-duration="800">
+    <div class="container text-center">
+      <h2>Keahlian</h2>
+      <p><strong>Apa yang Anda cari?</strong> <br>
+      Saya selalu memperioritaskan ketepatan dan kecepatan dalam mengembangkan ide maupun memecahkan masalah. Dengan pengalaman yang luas di berbagai bidang IT, saya siap membantu Anda mencapai tujuan dengan solusi yang efektif dan efisien.</p>
+      <p><strong>Kenapa Memilih Saya?</strong> <br>
+      Saya sangat profesional dan memiliki jiwa tanggung jawab yang besar dalam menyelesaikan masalah. Dengan pengalaman yang luas dan keahlian teknis yang mumpuni, saya siap memberikan solusi terbaik untuk setiap tantangan IT. Saya percaya pada pentingnya kualitas dan kecepatan dalam setiap proyek yang saya kerjakan.</p>
+  
+      <h3>Layanan yang Saya Kuasai:</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/network.png" alt="Jaringan &amp; IT Support">
+          </div>
+          <h4>Jaringan &amp; IT Support</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/lock.png" alt="Keamanan &amp; Manajemen IT">
+          </div>
+          <h4>Keamanan &amp; Manajemen IT</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/code.png" alt="Web Development">
+          </div>
+          <h4>Web Development</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/indoor-camera.png" alt="Instalasi &amp; Manajemen CCTV">
+          </div>
+          <h4>Instalasi &amp; Manajemen CCTV</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/flow-chart.png" alt="Desain &amp; Pengembangan Sistem">
+          </div>
+          <h4>Desain &amp; Pengembangan Sistem</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/toolbox.png" alt="Perakitan &amp; Diagnostik Perangkat Keras">
+          </div>
+          <h4>Perakitan &amp; Diagnostik Perangkat Keras</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/internet-of-things.png" alt="Manajemen Sistem IoT">
+          </div>
+          <h4>Manajemen Sistem IoT</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/combo-chart.png" alt="Optimasi Aplikasi Produktivitas">
+          </div>
+          <h4>Optimasi Aplikasi Produktivitas</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Proyek -->
+  <section id="projects" class="section" data-aos="fade-up" data-aos-duration="800">
+    <div class="container text-center">
+      <h2>Proyek</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Proyek 1</h3>
+          <p>Deskripsi proyek singkat.</p>
+          <a href="#">Lihat Proyek</a>
+        </div>
+        <div class="project-card">
+          <h3>Proyek 2</h3>
+          <p>Deskripsi proyek singkat.</p>
+          <a href="#">Lihat Proyek</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Kontak -->
+  <section id="contact" class="section skills" data-aos="fade-up" data-aos-duration="800">
+    <div class="container text-center">
+      <h2>Kontak</h2>
+      <p>Email: <a href="mailto:email@domain.com">email@domain.com</a></p>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Nama Anda. Semua hak dilindungi.</p>
+  </footer>
+  
+  <!-- Script Typing Effect dengan Fade (pastikan elemen dengan id "typing-text" ada jika diperlukan) -->
+  <script>
+    const textArray = ["Web Developer", "UI/UX Designer", "Freelancer"];
+    let index = 0;
+    const typingText = document.getElementById("typing-text");
+    function typeEffect() {
+      if(typingText) {
+        typingText.classList.remove("opacity-100");
+        typingText.classList.add("opacity-0");
+        setTimeout(() => {
+          typingText.innerText = textArray[index];
+          typingText.classList.remove("opacity-0");
+          typingText.classList.add("opacity-100");
+          index = (index + 1) % textArray.length;
+        }, 500);
+        setTimeout(typeEffect, 2500);
+      }
+    }
+    typeEffect();
+  </script>
+</body>
+</html>
