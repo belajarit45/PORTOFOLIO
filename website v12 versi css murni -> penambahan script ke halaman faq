@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Nama Anda</title>
+  <!-- Alpine.js & AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <!-- Font Awesome untuk Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* =======================
+       Style Website Awal
+    ========================== */
+    /* Global */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #1a202c; /* bg-gray-900 */
+      color: white;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .font-bold { font-weight: bold; }
+    .rounded-full { border-radius: 9999px; }
+    .shadow-lg { 
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    /* Responsive Typography untuk Hero */
+    .hero h1 {
+      font-size: 2.25rem; /* text-4xl */
+      margin: 0;
+    }
+    .hero h2 {
+      font-size: 2.25rem;
+      margin: 0.5rem 0;
+      color: #facc15; /* text-yellow-400 */
+    }
+    .hero p {
+      margin-top: 0.75rem; /* mt-3 */
+      font-size: 1.125rem; /* text-lg */
+      color: #d1d5db; /* text-gray-300 */
+    }
+    @media (min-width: 640px) {
+      .hero h1,
+      .hero h2 { font-size: 3rem; /* text-5xl */ }
+      .hero p { font-size: 1.25rem; /* text-xl */ }
+    }
+    @media (min-width: 768px) {
+      .hero h1,
+      .hero h2 { font-size: 3.75rem; /* text-6xl */ }
+    }
+    /* Video Background */
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    @media (max-width: 768px) {
+      video { object-position: center; }
+    }
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      padding: 1rem;
+      transition: background-color 300ms, box-shadow 300ms;
+      z-index: 50;
+    }
+    nav.bg-transparent { background-color: transparent; }
+    nav.bg-scrolled { 
+      background-color: #2d3748; /* bg-gray-800 */
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.25rem; /* text-xl */
+      font-weight: bold;
+      color: #facc15; /* text-yellow-400 */
+    }
+    .nav-logo a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+    /* Logo teks dan huruf */
+    .logo-text {
+      position: relative;
+      display: inline-block;
+    }
+    .logo-text::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #facc15;
+      width: 0;
+      transition: width 0.3s ease;
+      margin-top: 5px;
+    }
+    .logo-letter {
+      display: inline-block;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    /* Titik (logo-dot) default berada di posisi awal (sejajar huruf) */
+    .logo-dot {
+      display: inline-block;
+      vertical-align: bottom;
+      margin-left: 2px;
+      transform: translate(0, -8px);
+      transition: text-shadow 0.3s ease;
+    }
+    /* Keyframes untuk animasi hover:
+       - 0%: posisi awal (0, -8px)
+       - 40%: titik turun ke (0, 5px)
+       - 70%: titik bertahan di (0, 5px) (memberi waktu agar underline tumbuh)
+       - 80%: titik bergerak overshoot ke (70px, 5px)
+       - 90%: titik sedikit mundur ke (55px, 5px)
+       - 100%: titik menetap di (60px, 5px)
+    */
+    @keyframes hoverDotSequence {
+      0% {
+        transform: translate(0, -8px);
+      }
+      40% {
+        transform: translate(0, 5px);
+      }
+      70% {
+        transform: translate(0, 5px);
+      }
+      80% {
+        transform: translate(70px, 5px);
+      }
+      90% {
+        transform: translate(55px, 5px);
+      }
+      100% {
+        transform: translate(60px, 5px);
+      }
+    }
+    /* Keyframes untuk animasi unhover:
+       - 0%: posisi akhir (60px, 5px)
+       - 50%: titik bergerak mendatar ke (0, 5px)
+       - 100%: titik naik kembali ke posisi awal (0, -8px)
+    */
+    @keyframes unhoverDotSequence {
+      0% {
+        transform: translate(60px, 5px);
+      }
+      50% {
+        transform: translate(0, 5px);
+      }
+      100% {
+        transform: translate(0, -8px);
+      }
+    }
+    /* Saat hover: huruf membesar dan naik, serta muncul glow */
+    .nav-logo a:hover .logo-letter {
+      transform: scale(1.2) translateY(-5px);
+      text-shadow: 0 0 8px #facc15;
+    }
+    /* Underline tumbuh setelah delay agar terjadi setelah titik turun */
+    .nav-logo a:hover .logo-text::after {
+      width: 100%;
+      transition-delay: 0.5s;
+    }
+    /* Saat hover: titik menjalankan animasi hoverDotSequence */
+    .nav-logo a:hover .logo-dot {
+      animation: hoverDotSequence 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+      text-shadow: 0 0 8px #facc15;
+    }
+    /* Saat tidak dihover: titik menjalankan animasi unhoverDotSequence */
+    .nav-logo a:not(:hover) .logo-dot {
+      animation: unhoverDotSequence 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+    }
+    /* Saat tidak dihover: underline menyusut setelah titik selesai animasi (delay 0.5s) */
+    .nav-logo a:not(:hover) .logo-text::after {
+      width: 0;
+      transition-delay: 0.5s;
+    }
+    .hamburger {
+      background: none;
+      border: none;
+      color: #facc15;
+      cursor: pointer;
+      display: none;
+    }
+    /* Menu Navigasi */
+    .nav-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .nav-menu li { margin-left: 1.5rem; }
+    .nav-menu li a {
+      text-decoration: none;
+      color: white;
+      transition: color 300ms;
+    }
+    .nav-menu li a:hover { color: #facc15; }
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2d3748;
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+      }
+      .nav-menu.show { display: block; }
+      .nav-menu li { margin: 0.5rem 0; }
+    }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .hero .content { position: left; z-index: 10; margin-left: 8%; }
+    .max-w-xl { max-width: 36rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-5 { margin-top: 1.25rem; }
+    /* Tombol */
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 300ms, color 300ms;
+    }
+    .btn-primary {
+      background-color: #facc15;
+      color: #1a202c;
+      border: none;
+    }
+    .btn-primary:hover { background-color: #ecc94b; }
+    .btn-outline {
+      border: 2px solid #facc15;
+      color: #facc15;
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      background-color: #facc15;
+      color: #1a202c;
+    }
+    /* Sections Umum */
+    .section {
+      padding: 4rem 1.5rem; /* py-16 px-6 */
+      scroll-margin-top: 5rem; /* scroll-mt-20 */
+    }
+    /* About Saya */
+    .about {
+      max-width: 48rem; /* max-w-3xl */
+      margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.875rem; /* text-3xl */
+      font-weight: bold;
+      color: #facc15;
+    }
+    .about p {
+      margin-top: 1rem;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+    .about img {
+      margin-top: 1.5rem;
+      width: 8rem; /* w-32 = 8rem */
+      height: 8rem; /* h-32 = 8rem */
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Experience */
+    .experience {
+      background-color: #2d3748; /* bg-gray-800 */
+    }
+    .experience h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #facc15;
+    }
+    .experience p {
+      margin-top: 1rem;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+    .experience h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      color: #facc15;
+    }
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .experience-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .experience-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .skill-card {
+      background-color: #2d3748;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: background-color 300ms, transform 300ms;
+      text-align: center;
+    }
+    .skill-card:hover {
+      background-color: #facc15;
+      transform: scale(1.05);
+    }
+    .skill-card img {
+      width: 3rem; /* w-12 = 3rem */
+      height: 3rem;
+      margin-bottom: 1rem;
+    }
+    .skill-card h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+      margin: 0;
+    }
+    /* Projects */
+    .projects h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #facc15;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .project-card {
+      background-color: #2d3748;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: transform 300ms;
+    }
+    .project-card:hover { transform: scale(1.05); }
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .project-card p {
+      margin-top: 0.5rem;
+      color: #d1d5db;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #facc15;
+      text-decoration: none;
+      transition: text-decoration 300ms;
+    }
+    .project-card a:hover { text-decoration: underline; }
+    /* Contact */
+    .contact h2 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #facc15;
+    }
+    .contact p {
+      margin-top: 1rem;
+      color: #d1d5db;
+    }
+    .contact a {
+      color: #facc15;
+      text-decoration: none;
+      transition: text-decoration 300ms;
+    }
+    /* Section Contact */
+    .contact {
+      background-color: #2d3748;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .contact-title {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    .contact-intro {
+      font-size: 1.1rem;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    /* Container untuk link kontak */
+    .contact-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Styling untuk masing-masing link kontak */
+    .contact-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #000 !important; /* default hitam */
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .contact-link:hover {
+      color: #fff !important; /* berubah menjadi putih saat hover */
+      transform: translateY(-3px);
+    }
+    .contact-link i {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+      color: inherit; /* ikon mengikuti warna teks */
+    }
+    /* Styling untuk pembatas antar item */
+    .separator {
+      color: #000;
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+    /* Saat container di-hover, ubah warna pembatas menjadi putih */
+    .contact-links:hover .separator {
+      color: #fff;
+    }
+    /* Responsif: susunan vertical untuk layar kecil */
+    @media (max-width: 480px) {
+      .contact-links {
+          flex-direction: column;
+      }
+      .separator {
+          display: none;
+      }
+    }
+    /* Footer */
+    footer {
+      background-color: #1a202c;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    footer p {
+      color: #a0aec0;
+      margin: 0;
+    }
+    /* ======================================
+       Additional CSS untuk Fitur Carousel
+    ======================================== */
+    .carousel-feature {
+      margin: 2rem 0;
+    }
+    .carousel-feature .container-carousel {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .carousel-feature .carousel-box {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+    .carousel-feature h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #facc15;
+    }
+    .carousel-feature .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100px;
+    }
+    .carousel-feature .carousel-inner {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-feature .skill-item {
+      height: 100px;               /* Tinggi tetap */
+      display: flex;
+      flex-direction: row;         /* Ikon di kiri, teks di kanan */
+      align-items: center;         /* Center vertikal */
+      justify-content: center;     /* Center horizontal */
+      gap: 15px;
+      background: #1a202c;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    }
+    .carousel-feature .skill-item i {
+      font-size: 40px;
+      color: #facc15;
+    }
+    .carousel-feature .skill-text {
+      text-align: left;
+    }
+    .carousel-feature .skill-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #facc15;
+    }
+    .carousel-feature .skill-desc {
+      font-size: 14px;
+      color: #ccc;
+    }
+    
+    /* ======================================
+       CSS untuk Back-to-Top Button
+    ======================================== */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background-color: #facc15;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+    .back-to-top img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      AOS.init({
+        easing: 'ease-out-cubic',
+        once: true,
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay muted loop>
+    <source src="https://github.com/belajarit45/PORTOFOLIO/blob/main/456479_Timelapse_Time-lapse_1920x1080.mp4?raw=true" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Navbar -->
+  <nav x-data="{ scrolled: false, open: false }" 
+       @scroll.window="scrolled = (window.scrollY > 50)" 
+       :class="scrolled ? 'bg-scrolled' : 'bg-transparent'">
+    <div class="container nav-container">
+      <h1 class="nav-logo">
+        <a href="index.html">
+            <span class="logo-text">
+            <span class="logo-letter">P</span>
+            <span class="logo-letter">F</span>
+            <span class="logo-letter">O</span>
+            <span class="logo-letter">L</span>
+            <span class="logo-letter">I</span>
+            <span class="logo-letter">O</span>
+            </span>
+            <span class="logo-dot">.</span>
+        </a>
+    </h1>
+      <button @click="open = !open" class="hamburger">
+        <svg x-show="!open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg x-show="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <ul :class="open ? 'nav-menu show' : 'nav-menu'">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="container content">
+      <div class="max-w-xl">
+        <h1>Hello, I'm</h1>
+        <h2>Muhammad Andrian</h2>
+        <!-- Elemen untuk animasi mengetik dengan prefix statis "Saya suka " -->
+        <p id="typing-text"></p>
+        <div class="mt-5">
+          <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+          <a href="faq.html" class="btn btn-outline">Tanya Saya</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- About Saya -->
+  <section id="about" class="section" data-aos="fade-up" data-aos-duration="800">
+    <div class="container about text-center">
+      <h2>About</h2>
+      <p>Hi, Saya Muhammad Andrian dari Pekanbaru, Riau, Indonesia. Saya adalah seorang profesional IT berpengalaman dalam instalasi, konfigurasi, dan troubleshooting jaringan serta perangkat keras. Keahlian saya meliputi perakitan komputer, pengelolaan sistem CCTV, dan penguasaan perangkat lunak, dengan dasar pemrograman HTML, CSS, PHP, dan Python.</p>
+      <p>Di luar teknologi, saya tertarik pada olahraga dan traveling. Saya selalu berusaha memperluas wawasan dengan mempelajari perkembangan terbaru dalam bidang teknologi. Bagi saya, tantangan dan pengalaman baru adalah kunci untuk terus berkembang, baik secara pribadi maupun profesional.</p>
+      <img src="profile.jpg" alt="Foto Profil" class="rounded-full shadow-lg">
+    </div>
+  </section>
+  
+  <!-- Experience -->
+  <section id="experience" class="section experience" data-aos="fade-up" data-aos-duration="800">
+    <div class="container text-center">
+      <h2>Experience</h2>
+      <p><strong>Kenapa Memilih Saya?</strong> <br>
+      Saya sangat profesional dan memiliki jiwa tanggung jawab yang besar dalam menyelesaikan masalah. Dengan pengalaman yang luas dan keahlian teknis yang mumpuni, saya siap memberikan solusi terbaik untuk setiap tantangan IT. Saya percaya pada pentingnya kualitas dan kecepatan dalam setiap proyek yang saya kerjakan.</p>
+      
+      <!-- Fitur Skill Carousel -->
+      <div class="carousel-feature">
+        <div class="container-carousel">
+          <div class="carousel-box">
+            <div class="carousel" id="carousel1">
+              <div class="carousel-inner">
+                <div class="skill-item">
+                  <i class="fa-brands fa-google-drive"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Google Drive</div>
+                    <div class="skill-desc">Cloud Storage</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-microsoft"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">OneDrive</div>
+                    <div class="skill-desc">Cloud Backup</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-dropbox"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Dropbox</div>
+                    <div class="skill-desc">File Synchronization</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-table"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Microsoft Excel</div>
+                    <div class="skill-desc">Data Analysis</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-file-word"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Microsoft Word</div>
+                    <div class="skill-desc">Document Processing</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-file-powerpoint"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Microsoft PowerPoint</div>
+                    <div class="skill-desc">Presentation</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-palette"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Canva</div>
+                    <div class="skill-desc">Graphic Design</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-box">
+            <div class="carousel" id="carousel2">
+              <div class="carousel-inner">
+                <div class="skill-item">
+                  <i class="fa-solid fa-network-wired"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">TeamViewer</div>
+                    <div class="skill-desc">Remote Access</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-laptop"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">AnyDesk</div>
+                    <div class="skill-desc">Remote Desktop Control</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-desktop"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">RDP</div>
+                    <div class="skill-desc">Remote Access</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-terminal"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Putty</div>
+                    <div class="skill-desc">SSH Client</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Netdata</div>
+                    <div class="skill-desc">System Monitoring</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-cloud"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">ngrok</div>
+                    <div class="skill-desc">Local Tunneling</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-box">
+            <div class="carousel" id="carousel3">
+              <div class="carousel-inner">
+                <div class="skill-item">
+                  <i class="fa-solid fa-code"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Visual Studio Code</div>
+                    <div class="skill-desc">Code Editor</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-solid fa-server"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">XAMPP</div>
+                    <div class="skill-desc">PHP Development</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-html5"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">HTML</div>
+                    <div class="skill-desc">Basic Development</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-css3-alt"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">CSS</div>
+                    <div class="skill-desc">Web Styling</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-php"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">PHP</div>
+                    <div class="skill-desc">Back-End Development</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-python"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">Python</div>
+                    <div class="skill-desc">Programming &amp; Scripting</div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <i class="fa-brands fa-github"></i>
+                  <div class="skill-text">
+                    <div class="skill-title">GitHub</div>
+                    <div class="skill-desc">Version Control</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Fitur Skill Carousel -->
+      
+      <br><br><br>
+      <h2>Services</h2>
+      <p><strong>Apa yang Anda cari?</strong> <br>
+      Saya selalu memperioritaskan ketepatan dan kecepatan dalam mengembangkan ide maupun memecahkan masalah. Dengan pengalaman yang luas di berbagai bidang IT, saya siap membantu Anda mencapai tujuan dengan solusi yang efektif dan efisien. Beberapa layanan yang saya kuasai.</p>
+      <div class="experience-grid">
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/network.png" alt="Jaringan &amp; IT Support">
+          </div>
+          <h4>Jaringan &amp; IT Support</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/lock.png" alt="Keamanan &amp; Manajemen IT">
+          </div>
+          <h4>Keamanan &amp; Manajemen IT</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/code.png" alt="Web Development">
+          </div>
+          <h4>Web Development</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/indoor-camera.png" alt="Instalasi &amp; Manajemen CCTV">
+          </div>
+          <h4>Instalasi &amp; Manajemen CCTV</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/flow-chart.png" alt="Desain &amp; Pengembangan Sistem">
+          </div>
+          <h4>Desain &amp; Pengembangan Sistem</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/toolbox.png" alt="Perakitan &amp; Diagnostik Perangkat Keras">
+          </div>
+          <h4>Perakitan &amp; Diagnostik Perangkat Keras</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/internet-of-things.png" alt="Manajemen Sistem IoT">
+          </div>
+          <h4>Manajemen Sistem IoT</h4>
+        </div>
+        <div class="skill-card">
+          <div style="margin-bottom: 1rem;">
+            <img src="https://img.icons8.com/ios/96/ffffff/combo-chart.png" alt="Optimasi Aplikasi Produktivitas">
+          </div>
+          <h4>Optimasi Aplikasi Produktivitas</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects -->
+  <section id="projects" class="section" data-aos="fade-up" data-aos-duration="800">
+    <div class="container text-center">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Projects 1</h3>
+          <p>Deskripsi Projects singkat.</p>
+          <a href="#">Lihat Projects</a>
+        </div>
+        <div class="project-card">
+          <h3>Projects 2</h3>
+          <p>Deskripsi Projects singkat.</p>
+          <a href="#">Lihat Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="section contact" data-aos="fade-up" data-aos-duration="800">
+    <div class="container">
+      <h2 class="contact-title">Contact</h2>
+      <p class="contact-intro">
+        <strong>Tertarik Bekerja Sama? Hubungi Saya!</strong> <br>
+        Saya siap menjalin kerja sama yang produktif. Hubungi saya untuk memulai kolaborasi.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link whatsapp" href="https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20untuk%20berkonsultasi" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <span class="separator">|</span>
+        <a class="contact-link email" href="mailto:email@domain.com">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Email</span>
+        </a>
+        <span class="separator">|</span>
+        <a class="contact-link github" href="https://github.com/username" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p><small>Copyright &copy; 2025 Muhammad Andrian. All Rights Reserved.</small></p>
+  </footer>
+  
+  <!-- Back-to-Top Button dengan ikon GIF baru -->
+  <a href="#home" id="backToTop" class="back-to-top">
+    <img src="https://github.com/belajarit45/PORTOFOLIO/blob/main/icons8-up.gif?raw=true" alt="Back to Top">
+  </a>
+  
+  <!-- Script Typing Effect dengan Typewriter Animation dan prefix statis "Saya suka " -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const prefix = "Saya suka ";
+      const textArray = [
+        "Ngoding untuk bikin hal keren.",
+        "Olahraga biar tetap bugar.",
+        "Traveling cari pengalaman baru.",
+        "Main game buat seru-seruan!"
+      ];
+      let textIndex = 0;
+      let charIndex = 0;
+      const typingElement = document.getElementById("typing-text");
+
+      function type() {
+        if (charIndex < textArray[textIndex].length) {
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex + 1);
+          charIndex++;
+          setTimeout(type, 100); // Kecepatan mengetik (ms)
+        } else {
+          setTimeout(erase, 2000); // Tunggu sebelum hapus (ms)
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, 50); // Kecepatan hapus (ms)
+        } else {
+          textIndex = (textIndex + 1) % textArray.length;
+          setTimeout(type, 500); // Tunggu sebelum mengetik teks berikutnya (ms)
+        }
+      }
+
+      if (typingElement) setTimeout(type, 500);
+    });
+  </script>
+
+  <!-- Script untuk Skill Carousel -->
+  <script>
+    function initCarousel(carouselId) {
+      const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+      const items = document.querySelectorAll(`#${carouselId} .skill-item`);
+      const totalItems = items.length;
+      const firstClone = items[0].cloneNode(true);
+      carouselInner.appendChild(firstClone);
+
+      let index = 0;
+      let autoScroll;
+
+      function updateCarousel() {
+        carouselInner.style.transition = 'transform 0.5s ease-in-out';
+        carouselInner.style.transform = `translateY(-${index * 100}px)`;
+
+        if (index === totalItems) {
+          setTimeout(() => {
+            carouselInner.style.transition = 'none';
+            index = 0;
+            carouselInner.style.transform = `translateY(0)`;
+          }, 500);
+        }
+      }
+
+      function nextSlide() {
+        index++;
+        updateCarousel();
+      }
+
+      function startAutoScroll() {
+        autoScroll = setInterval(nextSlide, 3000);
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScroll);
+      }
+
+      startAutoScroll();
+      document.getElementById(carouselId).addEventListener('mouseenter', stopAutoScroll);
+      document.getElementById(carouselId).addEventListener('mouseleave', startAutoScroll);
+    }
+
+    initCarousel('carousel1');
+    initCarousel('carousel2');
+    initCarousel('carousel3');
+  </script>
+  
+  <!-- Script untuk Menampilkan Back-to-Top Button -->
+  <script>
+    window.addEventListener('scroll', function() {
+      const aboutSection = document.getElementById('about');
+      const backToTopButton = document.getElementById('backToTop');
+      // Dapatkan posisi atas dari section About relatif terhadap viewport
+      const aboutOffset = aboutSection.getBoundingClientRect().top;
+      
+      // Jika bagian About sudah mencapai atau melewati setengah tinggi viewport, tampilkan tombol
+      if (aboutOffset <= window.innerHeight / 2) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+  </script>
+
+  <script>
+    function toggleAnswer(index) {
+      var answers = document.querySelectorAll(".faq-item .answer");
+      answers.forEach((answer, i) => {
+        answer.style.display = (i === index)
+          ? (answer.style.display === "block" ? "none" : "block")
+          : "none";
+      });
+    }
+  </script>
+</body>
+</html>
