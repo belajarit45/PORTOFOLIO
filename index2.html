@@ -99,6 +99,105 @@
       font-weight: bold;
       color: #facc15; /* text-yellow-400 */
     }
+    .nav-logo a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+    /* Logo teks dan huruf */
+    .logo-text {
+      position: relative;
+      display: inline-block;
+    }
+    .logo-text::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #facc15;
+      width: 0;
+      transition: width 0.3s ease;
+      margin-top: 5px;
+    }
+    .logo-letter {
+      display: inline-block;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    /* Titik (logo-dot) default berada di posisi awal (sejajar huruf) */
+    .logo-dot {
+      display: inline-block;
+      vertical-align: bottom;
+      margin-left: 2px;
+      transform: translate(0, -8px);
+      transition: text-shadow 0.3s ease;
+    }
+    /* Keyframes untuk animasi hover:
+       - 0%: posisi awal (0, -8px)
+       - 40%: titik turun ke (0, 5px)
+       - 70%: titik bertahan di (0, 5px) (memberi waktu agar underline tumbuh)
+       - 80%: titik bergerak overshoot ke (70px, 5px)
+       - 90%: titik sedikit mundur ke (55px, 5px)
+       - 100%: titik menetap di (60px, 5px)
+    */
+    @keyframes hoverDotSequence {
+      0% {
+        transform: translate(0, -8px);
+      }
+      40% {
+        transform: translate(0, 5px);
+      }
+      70% {
+        transform: translate(0, 5px);
+      }
+      80% {
+        transform: translate(70px, 5px);
+      }
+      90% {
+        transform: translate(55px, 5px);
+      }
+      100% {
+        transform: translate(60px, 5px);
+      }
+    }
+    /* Keyframes untuk animasi unhover:
+       - 0%: posisi akhir (60px, 5px)
+       - 50%: titik bergerak mendatar ke (0, 5px)
+       - 100%: titik naik kembali ke posisi awal (0, -8px)
+    */
+    @keyframes unhoverDotSequence {
+      0% {
+        transform: translate(60px, 5px);
+      }
+      50% {
+        transform: translate(0, 5px);
+      }
+      100% {
+        transform: translate(0, -8px);
+      }
+    }
+    /* Saat hover: huruf membesar dan naik, serta muncul glow */
+    .nav-logo a:hover .logo-letter {
+      transform: scale(1.2) translateY(-5px);
+      text-shadow: 0 0 8px #facc15;
+    }
+    /* Underline tumbuh setelah delay agar terjadi setelah titik turun */
+    .nav-logo a:hover .logo-text::after {
+      width: 100%;
+      transition-delay: 0.5s;
+    }
+    /* Saat hover: titik menjalankan animasi hoverDotSequence */
+    .nav-logo a:hover .logo-dot {
+      animation: hoverDotSequence 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+      text-shadow: 0 0 8px #facc15;
+    }
+    /* Saat tidak dihover: titik menjalankan animasi unhoverDotSequence */
+    .nav-logo a:not(:hover) .logo-dot {
+      animation: unhoverDotSequence 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+    }
+    /* Saat tidak dihover: underline menyusut setelah titik selesai animasi (delay 0.5s) */
+    .nav-logo a:not(:hover) .logo-text::after {
+      width: 0;
+      transition-delay: 0.5s;
+    }
     .hamburger {
       background: none;
       border: none;
@@ -113,7 +212,6 @@
       padding: 0;
       display: flex;
     }
-    /* Opsi "Beranda" telah dihapus, sehingga hanya terdapat menu lain */
     .nav-menu li { margin-left: 1.5rem; }
     .nav-menu li a {
       text-decoration: none;
@@ -153,7 +251,7 @@
       height: 100%;
       background-color: rgba(0,0,0,0.5);
     }
-    .hero .content { position: relative; z-index: 10; }
+    .hero .content { position: left; z-index: 10; margin-left: 8%; }
     .max-w-xl { max-width: 36rem; }
     .mt-2 { margin-top: 0.5rem; }
     .mt-3 { margin-top: 0.75rem; }
@@ -325,18 +423,12 @@
       text-decoration: none;
       transition: text-decoration 300ms;
     }
-    /* Pastikan semua elemen menggunakan box-sizing border-box */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
     /* Section Contact */
     .contact {
       background-color: #2d3748;
       padding: 4rem 1.5rem;
       text-align: center;
     }
-
     .contact-title {
       font-size: 2.5rem;
       color: #fff;
@@ -344,21 +436,18 @@
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
-
     .contact-intro {
       font-size: 1.1rem;
       color: #d1d5db;
       margin-bottom: 2rem;
       line-height: 1.5;
     }
-
     /* Container untuk link kontak */
     .contact-links {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     /* Styling untuk masing-masing link kontak */
     .contact-link {
       display: flex;
@@ -369,18 +458,15 @@
       padding: 0.5rem 1rem;
       transition: transform 0.3s ease, color 0.3s ease;
     }
-
     .contact-link:hover {
       color: #fff !important; /* berubah menjadi putih saat hover */
       transform: translateY(-3px);
     }
-
     .contact-link i {
       font-size: 2rem;
       margin-right: 0.5rem;
       color: inherit; /* ikon mengikuti warna teks */
     }
-
     /* Styling untuk pembatas antar item */
     .separator {
       color: #000;
@@ -388,22 +474,19 @@
       padding: 0 0.5rem;
       transition: color 0.3s ease;
     }
-
     /* Saat container di-hover, ubah warna pembatas menjadi putih */
     .contact-links:hover .separator {
       color: #fff;
     }
-
     /* Responsif: susunan vertical untuk layar kecil */
     @media (max-width: 480px) {
-    .contact-links {
-        flex-direction: column;
+      .contact-links {
+          flex-direction: column;
+      }
+      .separator {
+          display: none;
+      }
     }
-    .separator {
-        display: none;
-    }
-    }
-
     /* Footer */
     footer {
       background-color: #1a202c;
@@ -414,7 +497,6 @@
       color: #a0aec0;
       margin: 0;
     }
-
     /* ======================================
        Additional CSS untuk Fitur Carousel
     ======================================== */
@@ -517,7 +599,19 @@
        @scroll.window="scrolled = (window.scrollY > 50)" 
        :class="scrolled ? 'bg-scrolled' : 'bg-transparent'">
     <div class="container nav-container">
-      <h1 class="nav-logo">Nama Anda</h1>
+      <h1 class="nav-logo">
+        <a href="index.html">
+            <span class="logo-text">
+            <span class="logo-letter">P</span>
+            <span class="logo-letter">F</span>
+            <span class="logo-letter">O</span>
+            <span class="logo-letter">L</span>
+            <span class="logo-letter">I</span>
+            <span class="logo-letter">O</span>
+            </span>
+            <span class="logo-dot">.</span>
+        </a>
+    </h1>
       <button @click="open = !open" class="hamburger">
         <svg x-show="!open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -527,7 +621,6 @@
         </svg>
       </button>
       <ul :class="open ? 'nav-menu show' : 'nav-menu'">
-        <!-- Opsi "Beranda" dihapus -->
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -543,10 +636,11 @@
       <div class="max-w-xl">
         <h1>Hello, I'm</h1>
         <h2>Muhammad Andrian</h2>
-        <p>Fullstack Developer, Database &amp; System Administrator</p>
+        <!-- Elemen untuk animasi mengetik dengan prefix statis "Saya suka " -->
+        <p id="typing-text"></p>
         <div class="mt-5">
           <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
-          <a href="resume.pdf" class="btn btn-outline">Unduh CV</a>
+          <a href="faq.html" class="btn btn-outline">Tanya Saya</a>
         </div>
       </div>
     </div>
@@ -848,25 +942,43 @@
     <img src="https://github.com/belajarit45/PORTOFOLIO/blob/main/icons8-up.gif?raw=true" alt="Back to Top">
   </a>
   
-  <!-- Script Typing Effect dengan Fade -->
+  <!-- Script Typing Effect dengan Typewriter Animation dan prefix statis "Saya suka " -->
   <script>
-    const textArray = ["Web Developer", "UI/UX Designer", "Freelancer"];
-    let index = 0;
-    const typingText = document.getElementById("typing-text");
-    function typeEffect() {
-      if(typingText) {
-        typingText.classList.remove("opacity-100");
-        typingText.classList.add("opacity-0");
-        setTimeout(() => {
-          typingText.innerText = textArray[index];
-          typingText.classList.remove("opacity-0");
-          typingText.classList.add("opacity-100");
-          index = (index + 1) % textArray.length;
-        }, 500);
-        setTimeout(typeEffect, 2500);
+    document.addEventListener("DOMContentLoaded", function() {
+      const prefix = "Saya suka ";
+      const textArray = [
+        "Ngoding untuk bikin hal keren.",
+        "Olahraga biar tetap bugar.",
+        "Traveling cari pengalaman baru.",
+        "Main game buat seru-seruan!"
+      ];
+      let textIndex = 0;
+      let charIndex = 0;
+      const typingElement = document.getElementById("typing-text");
+
+      function type() {
+        if (charIndex < textArray[textIndex].length) {
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex + 1);
+          charIndex++;
+          setTimeout(type, 100); // Kecepatan mengetik (ms)
+        } else {
+          setTimeout(erase, 2000); // Tunggu sebelum hapus (ms)
+        }
       }
-    }
-    typeEffect();
+
+      function erase() {
+        if (charIndex > 0) {
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, 50); // Kecepatan hapus (ms)
+        } else {
+          textIndex = (textIndex + 1) % textArray.length;
+          setTimeout(type, 500); // Tunggu sebelum mengetik teks berikutnya (ms)
+        }
+      }
+
+      if (typingElement) setTimeout(type, 500);
+    });
   </script>
 
   <!-- Script untuk Skill Carousel -->
@@ -932,6 +1044,17 @@
         backToTopButton.style.display = 'none';
       }
     });
+  </script>
+
+  <script>
+    function toggleAnswer(index) {
+      var answers = document.querySelectorAll(".faq-item .answer");
+      answers.forEach((answer, i) => {
+        answer.style.display = (i === index)
+          ? (answer.style.display === "block" ? "none" : "block")
+          : "none";
+      });
+    }
   </script>
 </body>
 </html>
