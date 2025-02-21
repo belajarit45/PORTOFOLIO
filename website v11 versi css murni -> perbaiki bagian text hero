@@ -525,7 +525,7 @@
       <div class="max-w-xl">
         <h1>Hello, I'm</h1>
         <h2>Muhammad Andrian</h2>
-        <!-- Elemen untuk animasi mengetik -->
+        <!-- Elemen untuk animasi mengetik dengan prefix statis "Saya suka " -->
         <p id="typing-text"></p>
         <div class="mt-5">
           <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
@@ -831,9 +831,10 @@
     <img src="https://github.com/belajarit45/PORTOFOLIO/blob/main/icons8-up.gif?raw=true" alt="Back to Top">
   </a>
   
-  <!-- Script Typing Effect dengan Typewriter Animation -->
+  <!-- Script Typing Effect dengan Typewriter Animation dan prefix statis "Saya suka " -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      const prefix = "Saya suka ";
       const textArray = [
         "Ngoding untuk bikin hal keren.",
         "Olahraga biar tetap bugar.",
@@ -846,7 +847,7 @@
 
       function type() {
         if (charIndex < textArray[textIndex].length) {
-          typingElement.innerHTML += textArray[textIndex].charAt(charIndex);
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex + 1);
           charIndex++;
           setTimeout(type, 100); // Kecepatan mengetik (ms)
         } else {
@@ -856,7 +857,7 @@
 
       function erase() {
         if (charIndex > 0) {
-          typingElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+          typingElement.innerHTML = prefix + textArray[textIndex].substring(0, charIndex - 1);
           charIndex--;
           setTimeout(erase, 50); // Kecepatan hapus (ms)
         } else {
