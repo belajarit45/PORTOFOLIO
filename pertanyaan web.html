@@ -1,74 +1,270 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Pengalaman Kerja</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-        .container { max-width: 800px; margin: auto; }
-        h1 { text-align: center; color: #007bff; }
-        .faq { border-bottom: 1px solid #ddd; padding: 15px 0; }
-        .question { font-weight: bold; cursor: pointer; color: #007bff; }
-        .answer { display: none; margin-top: 5px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Pengalaman Kerja</title>
+  <!-- Alpine.js untuk interaksi navbar -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+  <!-- Font Awesome untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Global */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #1a202c; /* bg-gray-900 */
+      color: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2d3748; /* bg-gray-800 */
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                  0 4px 6px -2px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #facc15;
+    }
+    .nav-logo a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+    /* Animasi per huruf dengan efek glow dan underline continuous pada teks (kecuali titik) */
+    .logo-text {
+      position: relative;
+      display: inline-block;
+    }
+    .logo-text::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #facc15;
+      width: 0;
+      transition: width 0.3s ease;
+      margin-top: 5px;
+    }
+    /* Setiap huruf (kecuali titik) dipecah dengan <span class="logo-letter"> */
+    .logo-letter {
+      display: inline-block;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    /* Titik ditempatkan di luar container logo-text agar underline tidak mencakupnya */
+    .logo-dot {
+      display: inline-block;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+      vertical-align: bottom;
+      margin-left: 2px;
+    }
+    /* Efek hover untuk huruf di dalam .logo-text: membesar, naik, dan muncul glow serta underline continuous */
+    .nav-logo a:hover .logo-letter {
+      transform: scale(1.2) translateY(-5px);
+      text-shadow: 0 0 8px #facc15;
+    }
+    .nav-logo a:hover .logo-text::after {
+      width: 100%;
+    }
+    /* Efek hover untuk titik: membesar namun TIDAK naik (agar tetap sejajar dengan underline) */
+    .nav-logo a:hover .logo-dot {
+      transform: scale(1.2) translateY(0);
+      text-shadow: 0 0 8px #facc15;
+    }
+    /* Delay per huruf untuk efek bergantian saat hover */
+    .nav-logo a:hover .logo-letter:nth-child(1) { transition-delay: 0s; }
+    .nav-logo a:hover .logo-letter:nth-child(2) { transition-delay: 0.05s; }
+    .nav-logo a:hover .logo-letter:nth-child(3) { transition-delay: 0.1s; }
+    .nav-logo a:hover .logo-letter:nth-child(4) { transition-delay: 0.15s; }
+    .nav-logo a:hover .logo-letter:nth-child(5) { transition-delay: 0.2s; }
+    .nav-logo a:hover .logo-letter:nth-child(6) { transition-delay: 0.25s; }
+    /* Saat tidak di-hover, huruf kembali ke kondisi awal */
+    .nav-logo a:not(:hover) .logo-letter,
+    .nav-logo a:not(:hover) .logo-dot {
+      transform: scale(1) translateY(0);
+    }
+    .nav-logo a:not(:hover) .logo-text::after {
+      width: 0;
+    }
+    /* Hamburger dan menu navbar */
+    .hamburger {
+      background: none;
+      border: none;
+      color: #facc15;
+      cursor: pointer;
+      display: none;
+    }
+    .nav-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .nav-menu li {
+      margin-left: 1.5rem;
+    }
+    .nav-menu li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 300ms;
+    }
+    .nav-menu li a:hover {
+      color: #facc15;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2d3748;
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+      }
+      .nav-menu.show {
+        display: block;
+      }
+      .nav-menu li {
+        margin: 0.5rem 0;
+      }
+    }
+    /* FAQ Container */
+    .faq-container {
+      margin-top: 80px; /* agar konten tidak tertutup navbar */
+      padding: 2rem 0;
+    }
+    h1 {
+      text-align: center;
+      color: #facc15;
+      margin-bottom: 2rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid #444;
+      padding: 15px 0;
+    }
+    .faq-item .question {
+      font-weight: bold;
+      cursor: pointer;
+      color: #facc15;
+      font-size: 1.1rem;
+    }
+    .faq-item .answer {
+      display: none;
+      margin-top: 10px;
+      color: #d1d5db;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>FAQ - Tentang Pengalaman Kerja</h1>
-        
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(0)">Bagaimana saya mengembangkan dan beradaptasi dengan perkembangan teknologi di bidang IT?</div>
-            <div class="answer">Saya rutin memperbarui keterampilan dengan belajar secara mandiri melalui eksplorasi teknologi baru, membaca dokumentasi teknis, serta mengerjakan proyek pribadi untuk mengasah keterampilan. Selain itu, saya berpartisipasi dalam komunitas IT dan mengikuti tren terbaru agar selalu relevan dengan perkembangan teknologi.</div>
-        </div>
+  <!-- Navbar -->
+  <nav x-data="{ open: false }">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <span class="logo-text">
+            <span class="logo-letter">P</span>
+            <span class="logo-letter">F</span>
+            <span class="logo-letter">O</span>
+            <span class="logo-letter">L</span>
+            <span class="logo-letter">I</span>
+            <span class="logo-letter">O</span>
+          </span>
+          <span class="logo-dot">.</span>
+        </a>
+      </div>
+      <button @click="open = !open" class="hamburger">
+        <svg x-show="!open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg x-show="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <ul :class="open ? 'nav-menu show' : 'nav-menu'">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(1)">Bagaimana saya memberikan dampak positif dalam pekerjaan atau proyek yang saya jalankan?</div>
-            <div class="answer">Saya selalu berusaha memberikan dampak positif dengan meningkatkan efisiensi operasional, mengoptimalkan infrastruktur IT, serta menciptakan solusi strategis dalam menyelesaikan tantangan teknis. Saya juga berkontribusi dalam meningkatkan produktivitas tim dengan berbagi pengetahuan dan pengalaman.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(2)">Apa kontribusi yang bisa saya berikan dalam tim atau proyek perusahaan?</div>
-            <div class="answer">Saya dapat memberikan kontribusi melalui kemampuan problem-solving, kerja sama tim yang solid, serta pendekatan analitis dalam menyelesaikan tugas. Saya juga berusaha meningkatkan efisiensi kerja dengan pendekatan strategis berbasis teknologi yang lebih optimal.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(3)">Bagaimana saya mengatasi tantangan teknis dan bekerja di bawah tekanan?</div>
-            <div class="answer">Saya menggunakan metode troubleshooting yang sistematis, memanfaatkan alat bantu yang tersedia, dan tetap fokus pada solusi. Saya juga mengatur prioritas dengan baik untuk memastikan tugas dapat diselesaikan secara efisien dan tepat waktu.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(4)">Apa pendekatan saya dalam menyelesaikan proyek atau tugas?</div>
-            <div class="answer">Saya menerapkan pendekatan analitis dengan mengidentifikasi masalah utama, merancang solusi, serta mengimplementasikannya secara sistematis. Saya juga memastikan komunikasi yang efektif dalam tim untuk mencapai hasil terbaik.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(5)">Bagaimana cara saya meningkatkan efisiensi kerja dalam tim?</div>
-            <div class="answer">Saya selalu berusaha meningkatkan efisiensi kerja dengan mengoptimalkan proses, menerapkan teknologi yang lebih efektif, dan berkolaborasi secara aktif dalam tim. Komunikasi yang jelas dan pembagian tugas yang strategis juga menjadi fokus utama saya.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(6)">Apa nilai dan etos kerja yang saya pegang dalam dunia profesional?</div>
-            <div class="answer">Saya menjunjung tinggi disiplin, tanggung jawab, serta sikap proaktif dalam menyelesaikan tugas. Saya memiliki semangat belajar yang tinggi dan berkomitmen untuk memberikan kontribusi terbaik bagi perusahaan.</div>
-        </div>
-
-        <div class="faq">
-            <div class="question" onclick="toggleAnswer(7)">Bagaimana cara menghubungi saya?</div>
-            <div class="answer">Anda dapat menghubungi saya melalui email atau nomor telepon yang tersedia di halaman kontak website ini.</div>
-        </div>
+  <!-- FAQ Container -->
+  <div class="container faq-container">
+    <h1>FAQ - Tentang Pengalaman Kerja</h1>
+    
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(0)">Bagaimana saya mengembangkan dan beradaptasi dengan perkembangan teknologi di bidang IT?</div>
+      <div class="answer">Saya rutin memperbarui keterampilan dengan belajar secara mandiri melalui eksplorasi teknologi baru, membaca dokumentasi teknis, serta mengerjakan proyek pribadi untuk mengasah keterampilan. Selain itu, saya berpartisipasi dalam komunitas IT dan mengikuti tren terbaru agar selalu relevan dengan perkembangan teknologi.</div>
     </div>
 
-    <script>
-        function toggleAnswer(index) {
-            var answers = document.querySelectorAll(".answer");
-            answers.forEach((answer, i) => {
-                if (i === index) {
-                    answer.style.display = answer.style.display === "block" ? "none" : "block";
-                } else {
-                    answer.style.display = "none";
-                }
-            });
-        }
-    </script>
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(1)">Bagaimana saya memberikan dampak positif dalam pekerjaan atau proyek yang saya jalankan?</div>
+      <div class="answer">Saya selalu berusaha memberikan dampak positif dengan meningkatkan efisiensi operasional, mengoptimalkan infrastruktur IT, serta menciptakan solusi strategis dalam menyelesaikan tantangan teknis. Saya juga berkontribusi dalam meningkatkan produktivitas tim dengan berbagi pengetahuan dan pengalaman.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(2)">Apa kontribusi yang bisa saya berikan dalam tim atau proyek perusahaan?</div>
+      <div class="answer">Saya dapat memberikan kontribusi melalui kemampuan problem-solving, kerja sama tim yang solid, serta pendekatan analitis dalam menyelesaikan tugas. Saya juga berusaha meningkatkan efisiensi kerja dengan pendekatan strategis berbasis teknologi yang lebih optimal.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(3)">Bagaimana saya mengatasi tantangan teknis dan bekerja di bawah tekanan?</div>
+      <div class="answer">Saya menggunakan metode troubleshooting yang sistematis, memanfaatkan alat bantu yang tersedia, dan tetap fokus pada solusi. Saya juga mengatur prioritas dengan baik untuk memastikan tugas dapat diselesaikan secara efisien dan tepat waktu.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(4)">Apa pendekatan saya dalam menyelesaikan proyek atau tugas?</div>
+      <div class="answer">Saya menerapkan pendekatan analitis dengan mengidentifikasi masalah utama, merancang solusi, serta mengimplementasikannya secara sistematis. Saya juga memastikan komunikasi yang efektif dalam tim untuk mencapai hasil terbaik.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(5)">Bagaimana cara saya meningkatkan efisiensi kerja dalam tim?</div>
+      <div class="answer">Saya selalu berusaha meningkatkan efisiensi kerja dengan mengoptimalkan proses, menerapkan teknologi yang lebih efektif, dan berkolaborasi secara aktif dalam tim. Komunikasi yang jelas dan pembagian tugas yang strategis juga menjadi fokus utama saya.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(6)">Apa nilai dan etos kerja yang saya pegang dalam dunia profesional?</div>
+      <div class="answer">Saya menjunjung tinggi disiplin, tanggung jawab, serta sikap proaktif dalam menyelesaikan tugas. Saya memiliki semangat belajar yang tinggi dan berkomitmen untuk memberikan kontribusi terbaik bagi perusahaan.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="toggleAnswer(7)">Bagaimana cara menghubungi saya?</div>
+      <div class="answer">Anda dapat menghubungi saya melalui email atau nomor telepon yang tersedia di halaman kontak website ini.</div>
+    </div>
+  </div>
+
+  <script>
+    function toggleAnswer(index) {
+      var answers = document.querySelectorAll(".faq-item .answer");
+      answers.forEach((answer, i) => {
+        answer.style.display = (i === index)
+          ? (answer.style.display === "block" ? "none" : "block")
+          : "none";
+      });
+    }
+  </script>
 </body>
 </html>
