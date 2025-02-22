@@ -218,15 +218,15 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;       /* Menggunakan 100vw untuk memastikan lebar penuh layar */
-        height: 100vh;      /* Menutupi seluruh tinggi layar */
+        width: 100vw;
+        height: 100vh;
         background-color: #2d3748;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 2rem;
         display: none;
-        z-index: 1000;      /* Naikkan z-index agar berada di atas konten lain */
+        z-index: 1000;
       }
       .nav-menu.show { display: flex; }
       .nav-menu li { 
@@ -238,7 +238,7 @@
     .faq-container {
       margin-top: 100px;
       padding: 2rem 0;
-      width: 100%;
+      /* Hapus properti width agar menggunakan lebar container bawaan */
     }
     h1 {
       text-align: center;
