@@ -211,20 +211,28 @@
     .nav-menu li a:hover {
       color: #facc15;
     }
+    /* Mobile Navbar */
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-menu {
-        position: absolute;
-        top: 100%;
+        position: fixed;  /* Ubah posisi menjadi fixed */
+        top: 0;
         left: 0;
         width: 100%;
+        height: 100vh;  /* Menutupi seluruh tinggi layar */
         background-color: #2d3748;
         flex-direction: column;
-        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
         display: none;
+        z-index: 99;
       }
-      .nav-menu.show { display: block; }
-      .nav-menu li { margin: 0.5rem 0; }
+      .nav-menu.show { display: flex; }
+      .nav-menu li { 
+        margin: 1rem 0;
+        text-align: center;
+      }
     }
     /* FAQ Section */
     .faq-container {
