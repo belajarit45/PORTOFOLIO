@@ -101,6 +101,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      box-sizing: border-box;
     }
     /* Navbar */
     nav {
@@ -210,37 +211,44 @@
     .nav-menu li a:hover {
       color: #facc15;
     }
+    /* Mobile Navbar */
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-menu {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
-        width: 100%;
+        width: 100vw;       /* Menggunakan 100vw untuk memastikan lebar penuh layar */
+        height: 100vh;      /* Menutupi seluruh tinggi layar */
         background-color: #2d3748;
         flex-direction: column;
-        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
         display: none;
+        z-index: 1000;      /* Naikkan z-index agar berada di atas konten lain */
       }
-      .nav-menu.show { display: block; }
-      .nav-menu li { margin: 0.5rem 0; }
+      .nav-menu.show { display: flex; }
+      .nav-menu li { 
+        margin: 1rem 0;
+        text-align: center;
+      }
     }
     /* FAQ Section */
     .faq-container {
       margin-top: 100px;
       padding: 2rem 0;
+      width: 100%;
     }
     h1 {
       text-align: center;
       color: #facc15;
       margin-bottom: 1rem;
     }
-    /* Pesan Sambutan yang Memanjang (tidak terlalu lebar) */
     .faq-intro {
-      max-width: 800px;  /* Lebar maksimum blok teks */
+      max-width: 800px;
       margin: 0 auto 1rem auto;
       padding: 0 1rem;
-      /* Jika teks membungkus, baris terakhir otomatis ditengah */
       text-align: justify;
       text-align-last: center;
       font-size: 0.95rem;
@@ -263,7 +271,7 @@
       font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
-      padding: 0;
+      padding: 10px;
     }
     .faq-question:focus { outline: none; }
     .faq-answer {
@@ -274,6 +282,7 @@
       color: #d1d5db;
       margin-top: 10px;
       font-size: 0.95rem;
+      padding: 0 10px;
     }
     .faq-answer.active {
       max-height: 500px;
@@ -284,6 +293,25 @@
     }
     .faq-icon.rotate {
       transform: rotate(180deg);
+    }
+    /* Responsive adjustments untuk perangkat dengan lebar maksimal 480px */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .faq-intro {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+      }
+      .faq-question {
+        font-size: 1rem;
+      }
+      .faq-answer {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
